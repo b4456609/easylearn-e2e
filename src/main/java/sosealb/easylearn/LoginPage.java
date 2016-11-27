@@ -27,7 +27,6 @@ public class LoginPage {
         driver.findElement(By.id("pass")).sendKeys(password);
         driver.findElement(By.id("u_0_l")).click();
 
-        screenShot(driver);
         return this;
     }
 }

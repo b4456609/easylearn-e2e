@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import static sosealb.easylearn.Util.screenShot;
+
 public class FolderPage {
     @FindBy(id = "demo-menu-lower-right")
     WebElement addButton;
@@ -22,7 +24,9 @@ public class FolderPage {
 
     public FolderPage newDir(String name) throws InterruptedException {
         addButton.click();
-        Thread.sleep(1000);
+        Thread.sleep(500);
+        screenShot(driver);
+
         getNewDirButton().click();
 
         NewFolderDialog newFolderDialog = PageFactory.initElements(driver, NewFolderDialog.class);

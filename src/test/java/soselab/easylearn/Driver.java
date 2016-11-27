@@ -13,8 +13,9 @@ import java.util.concurrent.TimeUnit;
 
 public class Driver {
     public static WebDriver CreateDriverAndLogin() throws IOException {
+        String url = System.getenv("SELENIUM_URL");
         try {
-            WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), DesiredCapabilities.chrome());
+            WebDriver driver = new RemoteWebDriver(new URL(url), DesiredCapabilities.chrome());
             driver.manage().window().setSize(new Dimension(1920, 1000));
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             new LoginPage(driver).login("kezwpeccse_1480223702@tfbnw.net", "easylearntest");

@@ -23,7 +23,6 @@ public class AddDirTest {
     @Test
     public void testWebdriver() throws Exception {
         FolderPage folderPage = new FolderPage(driver);
-        screenShot(driver);
         PageFactory.initElements(driver, folderPage);
         folderPage.newDir("newdir");
     }
