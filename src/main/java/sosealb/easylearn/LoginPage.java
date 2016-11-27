@@ -3,6 +3,10 @@ package sosealb.easylearn;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.io.IOException;
+
+import static sosealb.easylearn.Util.screenShot;
+
 public class LoginPage {
     private final WebDriver driver;
 
@@ -16,12 +20,14 @@ public class LoginPage {
         }
     }
 
-    public LoginPage login(String email, String password) {
+    public LoginPage login(String email, String password) throws IOException {
         driver.findElement(By.id("email")).clear();
         driver.findElement(By.id("email")).sendKeys(email);
         driver.findElement(By.id("pass")).clear();
         driver.findElement(By.id("pass")).sendKeys(password);
         driver.findElement(By.id("u_0_l")).click();
+
+        screenShot(driver);
         return this;
     }
 }
