@@ -22,6 +22,10 @@ public class FolderPage {
         return driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div[1]/div[2]/div/ul/li[2]"));
     }
 
+    private WebElement getNewPackButton() {
+        return driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div[1]/div[2]/div/ul/li[1]"));
+    }
+
     public FolderPage newDir(String name) throws InterruptedException {
         addButton.click();
         Thread.sleep(500);
@@ -32,5 +36,15 @@ public class FolderPage {
         NewFolderDialog newFolderDialog = PageFactory.initElements(driver, NewFolderDialog.class);
         newFolderDialog.addNewDir(name);
         return this;
+    }
+
+    public NewPackPage goToNewPackPage() throws InterruptedException {
+        addButton.click();
+        Thread.sleep(500);
+        screenShot(driver);
+
+        getNewPackButton().click();
+
+        return new NewPackPage(driver);
     }
 }

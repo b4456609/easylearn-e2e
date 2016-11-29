@@ -10,12 +10,13 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Optional;
 
 /**
  * Created by bernie on 2016/11/27.
  */
 public class Util {
-    public static void screenShot(WebDriver driver) {
+    public static Optional<String> screenShot(WebDriver driver) {
         WebDriver augmentedDriver = new Augmenter().augment(driver);
         File screenshot = ((TakesScreenshot) augmentedDriver).
                 getScreenshotAs(OutputType.FILE);
@@ -23,8 +24,10 @@ public class Util {
         File dest = new File(filename);
         try {
             FileUtils.copyFile(screenshot, dest);
+            return Optional.of(filename);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return Optional.empty();
     }
 }
