@@ -17,10 +17,16 @@ public class FolderPage {
     @FindBy(id = "pack-menu-pack1477403034413")
     WebElement pack14MenuBtn;
 
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div/main/div/div/div[1]/div/div[4]/button")
+    WebElement firstPackViewBtn;
+
     WebDriver driver;
 
     public FolderPage(WebDriver driver) {
         this.driver = driver;
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.mdl-card__title")));
+        PageFactory.initElements(driver, this);
     }
 
     public FolderPage clickPackMeunBtn() throws InterruptedException {
@@ -96,5 +102,11 @@ public class FolderPage {
         DeletePackDialog movePackDialog = new DeletePackDialog(driver);
         movePackDialog.clickSubmit();
         return this;
+    }
+
+
+    public PackPage viewFirstPack() {
+        firstPackViewBtn.click();
+        return new PackPage(driver);
     }
 }

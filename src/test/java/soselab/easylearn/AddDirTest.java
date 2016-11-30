@@ -4,15 +4,11 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
-import javafx.scene.media.MediaBuilder;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 import sosealb.easylearn.FolderPage;
-
-import java.util.Optional;
 
 import static sosealb.easylearn.Util.screenShot;
 import static soselab.easylearn.Driver.CreateDriverAndLogin;
@@ -43,7 +39,6 @@ public class AddDirTest {
     public void testAddDir() throws Exception {
         test.log(Status.INFO,"testadddir");
         FolderPage folderPage = new FolderPage(driver);
-        PageFactory.initElements(driver, folderPage);
         // adding screenshots to log
         String filename = screenShot(driver).orElseThrow(RuntimeException::new);
         test.pass("details").addScreenCaptureFromPath(filename);
