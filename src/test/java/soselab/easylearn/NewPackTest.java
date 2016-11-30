@@ -24,7 +24,12 @@ public class NewPackTest {
     public void newPackTest() throws Exception {
         FolderPage folderPage = new FolderPage(driver);
         PageFactory.initElements(driver, folderPage);
-        folderPage.goToNewPackPage();
+        folderPage
+                .goToNewPackPage()
+                .fillTitle("selenium")
+                .fillDescription("selenium is great")
+                .submitArticleAndGoFolderPage();
+        screenShot(driver);
     }
 
     @After

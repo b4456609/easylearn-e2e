@@ -44,7 +44,9 @@ public class FolderPage {
         screenShot(driver);
 
         getNewPackButton().click();
+        NewPackPage newPackPage = new NewPackPage(driver);
+        PageFactory.initElements(driver, newPackPage);
 
-        return new NewPackPage(driver);
+        return newPackPage;
     }
 }
