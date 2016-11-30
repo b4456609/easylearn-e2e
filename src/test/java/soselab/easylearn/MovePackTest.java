@@ -6,7 +6,6 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import sosealb.easylearn.FolderPage;
 
-import static sosealb.easylearn.Util.screenShot;
 import static soselab.easylearn.Driver.CreateDriverAndLogin;
 
 public class MovePackTest {
@@ -21,10 +20,9 @@ public class MovePackTest {
     @Test
     public void newPackTest() throws Exception {
         FolderPage folderPage = new FolderPage(driver);
-        screenShot(driver);
         folderPage
-                .clickPackMove();
-        screenShot(driver);
+                .clickFirstPackMeunBtn()
+                .clickFirstPackMoveBtnAndMove();
     }
 
     @After

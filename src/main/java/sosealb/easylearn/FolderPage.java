@@ -8,50 +8,37 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static sosealb.easylearn.Util.screenShot;
-
 public class FolderPage {
+    private final By firstPackDeleteBtn = By.xpath("//div[@id='root']/div/div/main/div/div/div/div/div[5]/div/ul/li");
+    private final By firstPackMoveBtn = By.xpath(" //*[@id='root']/div/div/main/div/div/div[1]/div/div[5]/div/ul/li[2]");
     @FindBy(id = "demo-menu-lower-right")
     WebElement addButton;
-
-    @FindBy(id = "pack-menu-pack1477403034413")
-    WebElement pack14MenuBtn;
-
+    @FindBy(xpath = "//div[@id='root']/div/div/main/div/div/div/div/div[5]/button")
+    WebElement firstpackMenuBtn;
     @FindBy(xpath = "//*[@id=\"root\"]/div/div/main/div/div/div[1]/div/div[4]/button")
     WebElement firstPackViewBtn;
-
     WebDriver driver;
 
     public FolderPage(WebDriver driver) {
         this.driver = driver;
         WebDriverWait wait = new WebDriverWait(driver, 5);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.mdl-card__title")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"root\"]/div/div/main/div/div")));
         PageFactory.initElements(driver, this);
     }
 
-    public FolderPage clickPackMeunBtn() throws InterruptedException {
-        pack14MenuBtn.click();
-        Thread.sleep(500);
+    public FolderPage clickFirstPackMeunBtn() throws InterruptedException {
+        firstpackMenuBtn.click();
+        //wait menu to show
+        Thread.sleep(300);
         return this;
     }
 
-    private WebElement getPackMenuBtn() {
-        By id = By.id("pack-menu-pack1477403034413");
-        WebDriverWait wait = new WebDriverWait(driver, 3);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(id));
-        return driver.findElement(id);
+    private WebElement getFirstMovePackBtn() {
+        return driver.findElement(firstPackMoveBtn);
     }
 
-    private WebElement getMovePackBtn() {
-        By xpath = By.xpath("//*[@id=\"root\"]/div/div/main/div/div/div[1]/div/div[5]/div/ul/li[2]");
-        WebDriverWait wait = new WebDriverWait(driver, 3);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(xpath));
-        return driver.findElement(xpath);
-    }
-
-    public FolderPage clickPackMove() throws InterruptedException {
-        getPackMenuBtn().click();
-        getMovePackBtn().click();
+    public FolderPage clickFirstPackMoveBtnAndMove() throws InterruptedException {
+        getFirstMovePackBtn().click();
 
         MovePackDialog movePackDialog = new MovePackDialog(driver);
         movePackDialog.moveDir();
@@ -69,7 +56,6 @@ public class FolderPage {
     public FolderPage newDir(String name) throws InterruptedException {
         addButton.click();
         Thread.sleep(500);
-        screenShot(driver);
 
         getNewDirButton().click();
 
@@ -81,7 +67,6 @@ public class FolderPage {
     public NewPackPage goToNewPackPage() throws InterruptedException {
         addButton.click();
         Thread.sleep(500);
-        screenShot(driver);
 
         getNewPackButton().click();
         NewPackPage newPackPage = new NewPackPage(driver);
@@ -91,10 +76,7 @@ public class FolderPage {
     }
 
     private WebElement getDeletePackBtn() {
-        By xpath = By.xpath("//*[@id=\"root\"]/div/div/main/div/div/div[1]/div/div[5]/div/ul/li[1]");
-        WebDriverWait wait = new WebDriverWait(driver, 3);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(xpath));
-        return driver.findElement(xpath);
+        return driver.findElement(firstPackDeleteBtn);
     }
 
     public FolderPage deletePack() {

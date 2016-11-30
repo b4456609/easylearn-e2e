@@ -6,7 +6,6 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import sosealb.easylearn.FolderPage;
 
-import static sosealb.easylearn.Util.screenShot;
 import static soselab.easylearn.Driver.CreateDriverAndLogin;
 
 public class DeletePackTest {
@@ -23,9 +22,8 @@ public class DeletePackTest {
     public void deletePackTest() throws Exception {
         FolderPage folderPage = new FolderPage(driver);
         folderPage
-                .clickPackMeunBtn()
+                .clickFirstPackMeunBtn()
                 .deletePack();
-        screenShot(driver);
     }
 
     @After

@@ -5,8 +5,6 @@ import org.openqa.selenium.WebDriver;
 
 import java.io.IOException;
 
-import static sosealb.easylearn.Util.screenShot;
-
 public class LoginPage {
     private final WebDriver driver;
 

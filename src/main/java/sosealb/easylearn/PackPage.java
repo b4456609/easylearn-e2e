@@ -12,10 +12,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  * Created by bernie on 11/30/16.
  */
 public class PackPage {
+    private final By newVersionBtn = By.xpath("//*[@id=\"root\"]/div/div/header/div[2]/div[2]/div/ul/li[1]");
     @FindBy(xpath = "//*[@id=\"appbar-menu-lower-right\"]")
     WebElement menu;
-    @FindBy(xpath = "//*[@id=\"root\"]/div/div/header/div[2]/div[2]/div/ul/li[1]")
-    WebElement newVersionBtn;
     @FindBy(xpath = "//*[@id=\"root\"]/div/div/header/div[2]/div[2]/div/ul/li[2]")
     WebElement otherVersionBtn;
     private WebDriver driver;
@@ -28,13 +27,13 @@ public class PackPage {
     }
 
     private WebElement getNewVersionBtn() {
-        return driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/header/div[2]/div[2]/div/ul/li[1]"));
+        return driver.findElement(newVersionBtn);
     }
 
-    public EditPage editTheVersion() {
+    public EditPage editTheVersion() throws InterruptedException {
         menu.click();
-        WebDriverWait wait = new WebDriverWait(driver, 5);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"root\"]/div/div/header/div[2]/div[2]/div/ul/li[1]")));
+        //wait for menu to open
+        Thread.sleep(300);
         getNewVersionBtn().click();
         return new EditPage(driver);
     }

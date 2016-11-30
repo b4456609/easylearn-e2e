@@ -6,7 +6,6 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import sosealb.easylearn.FolderPage;
 
-import static sosealb.easylearn.Util.screenShot;
 import static soselab.easylearn.Driver.CreateDriverAndLogin;
 
 public class NewPackTest {
@@ -27,7 +26,6 @@ public class NewPackTest {
                 .fillTitle("selenium")
                 .fillDescription("selenium is great")
                 .submitArticleAndGoFolderPage();
-        screenShot(driver);
     }
 
     @After

@@ -5,8 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import static sosealb.easylearn.Util.screenShot;
-
 public class NewPackPage {
     private WebDriver driver;
     @FindBy(id = "title")
@@ -23,7 +21,6 @@ public class NewPackPage {
     public NewPackPage fillTitle(String title) {
         titleTextField.click();
         titleTextField.sendKeys(title);
-        screenShot(driver);
         return this;
     }
 
