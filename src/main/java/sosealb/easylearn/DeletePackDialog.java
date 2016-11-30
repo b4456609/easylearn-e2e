@@ -8,21 +8,18 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class MovePackDialog {
-    @FindBy(xpath = "//*[@id=\"moving-dialog\"]/div[1]/ul/li[1]/span[2]/label/span[3]")
-    WebElement firstItem;
+public class DeletePackDialog {
 
-    @FindBy(css = "div.mdl-dialog__actions > button.mdl-button")
+    @FindBy(xpath = "//*[@id=\"remove-pack-dialog\"]/div[2]/button[1]")
     WebElement submit;
 
-    public MovePackDialog(WebDriver driver) {
+    public DeletePackDialog(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.mdl-dialog__actions > button.mdl-button")));
         PageFactory.initElements(driver, this);
     }
 
-    public void moveDir() {
-        firstItem.click();
+    public void clickSubmit() {
         submit.click();
     }
 }

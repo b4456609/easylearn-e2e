@@ -83,4 +83,18 @@ public class FolderPage {
 
         return newPackPage;
     }
+
+    private WebElement getDeletePackBtn() {
+        By xpath = By.xpath("//*[@id=\"root\"]/div/div/main/div/div/div[1]/div/div[5]/div/ul/li[1]");
+        WebDriverWait wait = new WebDriverWait(driver, 3);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(xpath));
+        return driver.findElement(xpath);
+    }
+
+    public FolderPage deletePack() {
+        getDeletePackBtn().click();
+        DeletePackDialog movePackDialog = new DeletePackDialog(driver);
+        movePackDialog.clickSubmit();
+        return this;
+    }
 }

@@ -10,7 +10,8 @@ import sosealb.easylearn.FolderPage;
 import static sosealb.easylearn.Util.screenShot;
 import static soselab.easylearn.Driver.CreateDriverAndLogin;
 
-public class MovePackTest {
+public class DeletePackTest {
+
     private WebDriver driver;
 
     @Before
@@ -20,12 +21,12 @@ public class MovePackTest {
     }
 
     @Test
-    public void newPackTest() throws Exception {
+    public void deletePackTest() throws Exception {
         FolderPage folderPage = new FolderPage(driver);
         PageFactory.initElements(driver, folderPage);
-        screenShot(driver);
         folderPage
-                .clickPackMove();
+                .clickPackMeunBtn()
+                .deletePack();
         screenShot(driver);
     }
 
